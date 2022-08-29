@@ -7,14 +7,6 @@ interface IState {
   openedMenuIndex: number;
 }
 
-interface IKeyDownAttr {
-  altKey: boolean;
-  shiftKey: boolean;
-  ctrlKey: boolean;
-  metaKey: boolean;
-  which: number;
-}
-
 class MenuBar extends React.Component<IREWMenu.IMenuBarProps, IState> {
   childMenu: IREWMenu.IContextMenu[];
   containerRef: React.RefObject<HTMLDivElement>;
@@ -32,7 +24,7 @@ class MenuBar extends React.Component<IREWMenu.IMenuBarProps, IState> {
   }
 
   onMousedownBody = (ev: MouseEvent) => {
-    var el = ev.target;
+    const el = ev.target;
     if (this.containerRef.current) {
       if (el && el instanceof Node && !this.containerRef.current.contains(el)) {
         this.setState({ active: false, openedMenuIndex: -1 });

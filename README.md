@@ -1,34 +1,160 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-## Getting Started
-
-First, run the development server:
+## Install
 
 ```bash
+npm i react-frame-contextmenu
+```
+
+## Development
+
+```bash
+npm i
 npm run dev
-# or
-yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## Example
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+### Contextmenu
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```js
+import React from 'react';
+import {
+    ArrowLeftOutlined,
+    ArrowRightOutlined,
+    FacebookOutlined,
+    GithubOutlined,
+    GooglePlusOutlined,
+    MailOutlined,
+    ReloadOutlined,
+    SlackOutlined,
+    TwitterOutlined,
+} from '@ant-design/icons';
+import {ContextMenu} from 'react-frame-contextmenu';
+import styled from '@emotion/styled';
+import {IREWMenu} from 'react-frame-contextmenu/common/@types';
 
-## Learn More
+const ContextMenuSample: React.FC = () => {
+    const contextMenu =
+        React.useRef <
+        ContextMenu >
+        new ContextMenu({
+            id: 'basic',
+            style: {fontSize: '14px', minWidth: '200px'},
+        });
 
-To learn more about Next.js, take a look at the following resources:
+    const onClickMenu: IREWMenu.OnClickItem = React.useCallback(menuItem => {
+        console.log(menuItem);
+    }, []);
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    const handleContextMenu = React.useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+        e.preventDefault();
+        contextMenu.current.popup({
+            x: e.pageX,
+            y: e.pageY,
+        });
+    }, []);
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+    React.useEffect(() => {
+        contextMenu.current.setMenu([
+            {
+                label: 'Back (enabled: false)',
+                icon: <ArrowLeftOutlined/>,
+                click: onClickMenu,
+                enabled: false,
+            },
+            {
+                label: 'Forward',
+                icon: <ArrowRightOutlined/>,
+                click: onClickMenu,
+                accelerator: 'Cmd+F',
+            },
+            {
+                label: 'Reload',
+                icon: <ReloadOutlined/>,
+                click: onClickMenu,
+            },
+            {type: 'separator'},
+            {label: 'Save as', click: onClickMenu, visible: false},
+            {
+                label: 'Print (enabled: false)',
+                click: onClickMenu,
+                enabled: false,
+            },
+            {
+                type: 'checkbox',
+                label: 'Action option 1',
+                click: (menuItem, w, e) => {
+                    console.log(menuItem);
+                },
+            },
+            {
+                type: 'checkbox',
+                label: 'Action option 2 (enabled: false)',
+                checked: true,
+                enabled: false,
+                click: (menuItem, w, e) => {
+                    console.log(menuItem);
+                },
+            },
+            {
+                label: 'send to...',
+                submenu: [
+                    {
+                        label: 'Github',
+                        icon: <GithubOutlined/>,
+                        click: onClickMenu,
+                    },
+                    {
+                        label: 'Gitlab',
+                        icon: <GithubOutlined/>,
+                        click: onClickMenu,
+                    },
+                    {
+                        label: 'Twitter',
+                        icon: <TwitterOutlined/>,
+                        click: onClickMenu,
+                    },
+                    {
+                        label: 'Facebook',
+                        icon: <FacebookOutlined/>,
+                        click: onClickMenu,
+                    },
+                    {
+                        label: 'Google+',
+                        icon: <GooglePlusOutlined/>,
+                        click: onClickMenu,
+                        visible: false,
+                    },
+                    {
+                        label: 'Slack (enabled: false)',
+                        icon: <SlackOutlined/>,
+                        click: onClickMenu,
+                        enabled: false,
+                    },
+                    {
+                        label: 'Email',
+                        icon: <MailOutlined/>,
+                        click: onClickMenu,
+                    },
+                ],
+            },
+            {type: 'separator'},
+            {label: 'View Source', click: onClickMenu},
+            {label: 'Save', click: onClickMenu},
+        ]);
+    }, [onClickMenu]);
 
-## Deploy on Vercel
+    return <Container onContextMenu={handleContextMenu}>Right mouse click here</Container>;
+};
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+const Container = styled.div`
+  height: 500px;
+  background: #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+export default ContextMenuSample;
+```

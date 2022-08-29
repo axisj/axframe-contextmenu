@@ -1,18 +1,10 @@
 import * as React from 'react';
 import { IREWMenu } from './common/@types';
 import { PopupMenu } from './components';
-
-const ReactDOM = (() => {
-  try {
-    const ReactDom = require('@hot-loader/react-dom');
-    if (ReactDom) {
-      return ReactDom;
-    }
-  } catch (error) {}
-  return require('react-dom');
-})();
+import { createRoot, Root } from 'react-dom/client';
 
 class ContextMenu implements IREWMenu.IContextMenu {
+  root: Root | undefined;
   container: HTMLDivElement | undefined;
   options: IREWMenu.IContextMenuOptions = {
     id: '',
@@ -61,6 +53,12 @@ class ContextMenu implements IREWMenu.IContextMenu {
       document.body.appendChild(this.container);
     }
 
+    try {
+      this.root?.unmount();
+    } finally {
+      this.root = createRoot(this.container);
+    }
+
     // set style of this.container
     this.container.style.position = 'absolute';
     this.container.style.left = containerLeft + 'px';
@@ -73,6 +71,10 @@ class ContextMenu implements IREWMenu.IContextMenu {
 
   close() {
     this.visible = false;
+    try {
+      this.root?.unmount();
+    } finally {
+    }
   }
 
   onClickItem: IREWMenu.OnClickItem = (menuItem, w, e) => {
@@ -84,30 +86,30 @@ class ContextMenu implements IREWMenu.IContextMenu {
       }
     }
     // 메뉴가 클릭되었다는 것은 인지하는 곳.
-    this.visible = false;
+    this.close();
   };
 
-  // document.body에서 마우스 다운이 일어난 경우 contextMenu안쪽이 클릭된 것이지 바깥쪽에서 마우스 다운이 일어 난 건지 체크.
+  // document.body 에서 마우스 다운이 일어난 경우 contextMenu 안쪽이 클릭된 것이지 바깥쪽에서 마우스 다운이 일어 난 건지 체크.
   onMousedownBody = (e: MouseEvent) => {
     const el = e.target;
     if (el && el instanceof Node && !this.container?.contains(el)) {
-      this.visible = false;
+      this.close();
     }
   };
 
   onKeyDownWindow = (e: KeyboardEvent) => {
     if (e.key === 'Escape') {
-      this.visible = false;
+      this.close();
     }
   };
 
   render() {
-    if (!this.container) {
+    if (!this.container || !this.root) {
       return;
     }
     const { style = {} } = this.options;
 
-    ReactDOM.render(
+    this.root?.render(
       <PopupMenu
         menuItems={this.menuItems}
         onClickItem={this.onClickItem}
@@ -118,7 +120,6 @@ class ContextMenu implements IREWMenu.IContextMenu {
         }}
         userStyle={{ ...style, ...{ left: 0, top: 0 } }}
       />,
-      this.container,
     );
 
     if (this.visible) {
