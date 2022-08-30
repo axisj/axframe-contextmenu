@@ -1,0 +1,114 @@
+.rf-contextmenu {
+  position: absolute;
+  box-sizing: border-box;
+
+  background: $rf-contextmenu-bg-color;
+  border: $rf-contextmenu-border-width $rf-contextmenu-border-style $rf-contextmenu-border-color;
+  box-shadow: $rf-contextmenu-box-shadow;
+  border-radius: $rf-contextmenu-border-radius;
+  padding: $rf-contextmenu-padding-size 0;
+  margin-top: -$rf-contextmenu-padding-size - $rf-contextmenu-border-width;
+
+  user-select: none;
+  cursor: default;
+  min-width: $rf-contextmenu-min-width;
+
+  font-size: $rf-contextmenu-item-font-size;
+  color: $rf-contextmenu-item-font-color;
+  font-weight: $rf-contextmenu-item-font-weight;
+
+  [data-ctx-item] {
+    position: relative;
+    padding: $rf-contextmenu-item-padding;
+    line-height: $rf-contextmenu-item-line-height;
+    white-space: nowrap;
+    font-size: inherit;
+    color: inherit;
+    font-weight: inherit;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: stretch;
+    align-items: center;
+
+    [data-label] {
+      flex: 1;
+      margin-right: $rf-contextmenu-padding-size;
+    }
+
+    [data-label-icon] {
+      margin-right: $rf-contextmenu-padding-size;
+    }
+
+    [data-checkbox] {
+      width: $rf-contextmenu-item-checkbox-width;
+    }
+
+    [data-accelerator] {
+      font-size: 0.8em;
+      margin-left: $rf-contextmenu-padding-size;
+      margin-right: $rf-contextmenu-padding-size;
+    }
+
+    &:hover {
+      background-color: $rf-menu-item-hover-bg-color;
+      color: $rf-menu-item-hover-font-color;
+    }
+
+    &[data-opened] {
+      background-color: $rf-menu-item-hover-bg-color;
+      color: $rf-menu-item-hover-font-color;
+    }
+
+    &[data-enabled='false'] {
+      opacity: 0.2;
+
+      &:hover {
+        background-color: $rf-contextmenu-bg-color;
+        color: $rf-contextmenu-item-font-color;
+      }
+    }
+  }
+
+  [data-ctx-separator] {
+    height: $rf-menu-separator-height;
+    background-color: $rf-menu-separator-color;
+    padding: 0;
+    margin: $rf-menu-separator-margin;
+  }
+}
+
+.rf-menubar {
+  cursor: default;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: stretch;
+  flex-wrap: nowrap;
+  user-select: none;
+
+  [data-menubar-item] {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: $rf-menubar-item-padding;
+    color: $rf-menubar-item-font-color;
+    font-weight: $rf-menubar-item-font-weight;
+
+    &:hover {
+      background-color: $rf-menu-item-hover-bg-color;
+      color: $rf-menu-item-hover-font-color;
+    }
+  }
+}
+
+.rf-menubar-active {
+  [data-menubar-item] {
+    &:hover,
+    &.active {
+      background-color: $rf-menu-item-hover-bg-color;
+      color: $rf-menu-item-hover-font-color;
+    }
+  }
+}
