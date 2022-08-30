@@ -50,9 +50,8 @@ import {
   SlackOutlined,
   TwitterOutlined,
 } from '@ant-design/icons';
-import {ContextMenu} from 'react-frame-contextmenu';
 import styled from '@emotion/styled';
-import {IREWMenu} from 'react-frame-contextmenu/common/@types';
+import {MenuBar, IRFCMenu} from 'react-frame-contextmenu';
 
 const ContextMenuSample: React.FC = () => {
   const contextMenu = React.useRef<ContextMenu>(new ContextMenu({
@@ -181,7 +180,6 @@ export default ContextMenuSample;
 
 ```typescript jsx
 import React from 'react';
-import {IREWMenu} from 'react-frame-contextmenu/common/@types';
 import styled from '@emotion/styled';
 import {
   ArrowLeftOutlined,
@@ -194,7 +192,7 @@ import {
   SlackOutlined,
   TwitterOutlined,
 } from '@ant-design/icons';
-import MenuBar from 'react-frame-contextmenu/MenuBar';
+import {MenuBar, IREWMenu} from 'react-frame-contextmenu';
 
 const MenuBarExample: React.FC = () => {
   const onClickMenu: IREWMenu.OnClickItem = React.useCallback(menuItem => {

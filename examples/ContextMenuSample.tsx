@@ -10,9 +10,8 @@ import {
   SlackOutlined,
   TwitterOutlined,
 } from '@ant-design/icons';
-import { ContextMenu } from '../react-frame-contextmenu';
+import { ContextMenu, IRFCMenu } from '../react-frame-contextmenu';
 import styled from '@emotion/styled';
-import { IRFCMenu } from '../react-frame-contextmenu/common/@types';
 
 const ContextMenuSample: React.FC = () => {
   const contextMenu = React.useRef<ContextMenu>(

@@ -1,5 +1,4 @@
 import React from 'react';
-import { IRFCMenu } from '../react-frame-contextmenu/common/@types';
 import styled from '@emotion/styled';
 import {
   ArrowLeftOutlined,
@@ -12,7 +11,7 @@ import {
   SlackOutlined,
   TwitterOutlined,
 } from '@ant-design/icons';
-import MenuBar from '../react-frame-contextmenu/MenuBar';
+import { MenuBar, IRFCMenu } from '../react-frame-contextmenu';
 
 const MenuBarExample: React.FC = () => {
   const onClickMenu: IRFCMenu.OnClickItem = React.useCallback(menuItem => {
