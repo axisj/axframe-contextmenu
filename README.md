@@ -56,9 +56,10 @@ import {IREWMenu} from 'react-frame-contextmenu/common/@types';
 
 const ContextMenuSample: React.FC = () => {
   const contextMenu = React.useRef<ContextMenu>(new ContextMenu({
-    id: 'basic',
-    style: {fontSize: '14px', minWidth: '200px'},
-  }));
+      id: 'basic',
+      style: {fontSize: '14px', minWidth: '200px'},
+    } //, MenuItem[] also you can set menu by second parameter
+  ));
 
   const onClickMenu: IREWMenu.OnClickItem = React.useCallback(menuItem => {
     console.log(menuItem);
