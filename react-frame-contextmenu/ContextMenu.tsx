@@ -1,10 +1,9 @@
 import * as React from 'react';
+import ReactDOM from 'react-dom';
 import { IRFCMenu } from './common/@types';
 import { PopupMenu } from './components';
-import { createRoot, Root } from 'react-dom/client';
 
 class ContextMenu implements IRFCMenu.IContextMenu {
-  root: Root | undefined;
   container: HTMLDivElement | undefined;
   options: IRFCMenu.IContextMenuOptions = {
     id: '',
@@ -56,12 +55,6 @@ class ContextMenu implements IRFCMenu.IContextMenu {
       document.body.appendChild(this.container);
     }
 
-    try {
-      this.root?.unmount();
-    } finally {
-      this.root = createRoot(this.container);
-    }
-
     // set style of this.container
     this.container.style.position = 'absolute';
     this.container.style.left = containerLeft + 'px';
@@ -74,10 +67,6 @@ class ContextMenu implements IRFCMenu.IContextMenu {
 
   close() {
     this.visible = false;
-    try {
-      this.root?.unmount();
-    } finally {
-    }
   }
 
   onClickItem: IRFCMenu.OnClickItem = (menuItem, w, e) => {
@@ -107,12 +96,12 @@ class ContextMenu implements IRFCMenu.IContextMenu {
   };
 
   render() {
-    if (!this.container || !this.root) {
+    if (!this.container) {
       return;
     }
     const { style = {} } = this.options;
 
-    this.root?.render(
+    ReactDOM.render(
       <PopupMenu
         menuItems={this.menuItems}
         onClickItem={this.onClickItem}
@@ -123,6 +112,7 @@ class ContextMenu implements IRFCMenu.IContextMenu {
         }}
         userStyle={{ ...style, ...{ left: 0, top: 0 } }}
       />,
+      this.container,
     );
 
     if (this.visible) {
