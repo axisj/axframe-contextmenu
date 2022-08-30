@@ -1,6 +1,8 @@
 [![npm version](https://badge.fury.io/js/react-frame-contextmenu.svg)](https://badge.fury.io/js/react-frame-contextmenu)
 [![](https://img.shields.io/npm/dm/react-frame-contextmenu.svg)](https://www.npmjs.com/package/react-frame-contextmenu)
 
+react-frame-menu makes menus dynamically added to the "React" project available.
+
 ## Install
 
 ```bash
@@ -18,9 +20,22 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Example
+## USE
 
-### Contextmenu
+### Add styles to your project
+
+Add a CSS file to suit your project.
+You can also create your own files by referring to the files provided.
+
+```typescript jsx
+import '../react-frame-contextmenu/style.less';
+// or
+import '../react-frame-contextmenu/style.css';
+// or 
+import '../react-frame-contextmenu/style.scss';
+```
+
+### Contextmenu Example
 
 ```typescript jsx
 import React from 'react';
@@ -161,7 +176,7 @@ const Container = styled.div`
 export default ContextMenuSample;
 ```
 
-### MenuBar
+### MenuBar Example
 
 ```typescript jsx
 import React from 'react';
