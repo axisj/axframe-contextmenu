@@ -1,5 +1,5 @@
 import React from 'react';
-import { IREWMenu } from '../react-frame-contextmenu/common/@types';
+import { IRFCMenu } from '../react-frame-contextmenu/common/@types';
 import styled from '@emotion/styled';
 import {
   ArrowLeftOutlined,
@@ -15,7 +15,7 @@ import {
 import MenuBar from '../react-frame-contextmenu/MenuBar';
 
 const MenuBarExample: React.FC = () => {
-  const onClickMenu: IREWMenu.OnClickItem = React.useCallback(menuItem => {
+  const onClickMenu: IRFCMenu.OnClickItem = React.useCallback(menuItem => {
     console.log(menuItem);
   }, []);
 

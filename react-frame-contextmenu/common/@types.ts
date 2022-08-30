@@ -1,7 +1,7 @@
 import ContextMenu from '../ContextMenu';
 import * as React from 'react';
 
-export namespace IREWMenu {
+export namespace IRFCMenu {
   export type OnHoverItem = (menuItem: IMenuItem, event: React.MouseEvent<HTMLDivElement>, hover: boolean) => void;
 
   export type OnClickItem = (

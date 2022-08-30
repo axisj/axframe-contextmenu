@@ -1,10 +1,10 @@
 import * as React from 'react';
 import PopupMenu from './PopupMenu';
-import { IREWMenu } from '../common/@types';
+import { IRFCMenu } from '../common/@types';
 
 const Submenu: React.FC<{
-  submenu: IREWMenu.IMenuItem[];
-  onClickItem: IREWMenu.OnClickItem;
+  submenu: IRFCMenu.IMenuItem[];
+  onClickItem: IRFCMenu.OnClickItem;
   itemRef: React.RefObject<HTMLDivElement>;
 }> = ({ submenu, onClickItem, itemRef }) => {
   if (!itemRef.current) {

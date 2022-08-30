@@ -12,17 +12,17 @@ import {
 } from '@ant-design/icons';
 import { ContextMenu } from '../react-frame-contextmenu';
 import styled from '@emotion/styled';
-import { IREWMenu } from '../react-frame-contextmenu/common/@types';
+import { IRFCMenu } from '../react-frame-contextmenu/common/@types';
 
 const ContextMenuSample: React.FC = () => {
   const contextMenu = React.useRef<ContextMenu>(
     new ContextMenu({
       id: 'basic',
       style: { fontSize: '14px', minWidth: '200px' },
-    }),
+    }), // also you can set menu by second parameter
   );
 
-  const onClickMenu: IREWMenu.OnClickItem = React.useCallback(menuItem => {
+  const onClickMenu: IRFCMenu.OnClickItem = React.useCallback(menuItem => {
     console.log(menuItem);
   }, []);
 
