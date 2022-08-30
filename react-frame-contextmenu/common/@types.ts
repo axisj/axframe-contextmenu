@@ -2,24 +2,28 @@ import ContextMenu from '../ContextMenu';
 import * as React from 'react';
 
 export namespace IRFCMenu {
-  export type OnHoverItem = (menuItem: IMenuItem, event: React.MouseEvent<HTMLDivElement>, hover: boolean) => void;
+  export type OnHoverItem<P = string> = (
+    menuItem: IMenuItem<P>,
+    event: React.MouseEvent<HTMLDivElement>,
+    hover: boolean,
+  ) => void;
 
-  export type OnClickItem = (
-    menuItem: IMenuItem,
+  export type OnClickItem<T = any> = (
+    menuItem: IMenuItem<T>,
     browserWindow: Window,
     event: React.MouseEvent<HTMLDivElement>,
   ) => void;
 
-  export interface IMenuItem {
-    action?: string;
+  export interface IMenuItem<T = any> {
+    action?: T;
     id?: string;
     label?: string;
     subLabel?: string;
     type?: 'normal' | 'separator' | 'checkbox';
     icon?: string | React.ReactNode;
     checked?: boolean;
-    submenu?: IMenuItem[];
-    click?: OnClickItem;
+    submenu?: IMenuItem<T>[];
+    click?: OnClickItem<T>;
     opened?: boolean;
     enabled?: boolean;
     visible?: boolean;
