@@ -28,11 +28,11 @@ Add a CSS file to suit your project.
 You can also create your own files by referring to the files provided.
 
 ```typescript jsx
-import '../react-frame-contextmenu/style.less';
+import 'react-frame-contextmenu/dist/style.less';
 // or
-import '../react-frame-contextmenu/style.css';
+import 'react-frame-contextmenu/dist/style.css';
 // or 
-import '../react-frame-contextmenu/style.scss';
+import 'react-frame-contextmenu/dist/style.scss';
 ```
 
 ### Contextmenu Example
