@@ -11,6 +11,7 @@ export namespace IRFCMenu {
   ) => void;
 
   export interface IMenuItem {
+    action?: string;
     id?: string;
     label?: string;
     subLabel?: string;

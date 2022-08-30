@@ -60,7 +60,7 @@ const ContextMenuSample: React.FC = () => {
     } //, MenuItem[] also you can set menu by second parameter
   ));
 
-  const onClickMenu: IREWMenu.OnClickItem = React.useCallback(menuItem => {
+  const onClickMenu: IRFCMenu.OnClickItem = React.useCallback(menuItem => {
     console.log(menuItem);
   }, []);
 
@@ -192,10 +192,10 @@ import {
   SlackOutlined,
   TwitterOutlined,
 } from '@ant-design/icons';
-import {MenuBar, IREWMenu} from 'react-frame-contextmenu';
+import {MenuBar, IRFCMenu} from 'react-frame-contextmenu';
 
 const MenuBarExample: React.FC = () => {
-  const onClickMenu: IREWMenu.OnClickItem = React.useCallback(menuItem => {
+  const onClickMenu: IRFCMenu.OnClickItem = React.useCallback(menuItem => {
     console.log(menuItem);
   }, []);
 
