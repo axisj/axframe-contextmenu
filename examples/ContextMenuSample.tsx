@@ -123,7 +123,11 @@ const ContextMenuSample: React.FC = () => {
     ]);
   }, [onClickMenu]);
 
-  return <Container onContextMenu={handleContextMenu}>Right mouse click here</Container>;
+  return (
+    <Container data-testid={'context-menu-sample-div'} onContextMenu={handleContextMenu}>
+      Right mouse click here
+    </Container>
+  );
 };
 
 const Container = styled.div`
