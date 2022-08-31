@@ -37,7 +37,7 @@ import 'react-frame-contextmenu/dist/style.scss';
 
 ### Contextmenu Example
 
-Open [https://codesandbox.io/s/react-frame-contextmenu-6ldsx1](codesandbox)
+Open [codesandbox example](https://codesandbox.io/s/react-frame-contextmenu-6ldsx1)
 
 ```typescript jsx
 import React from 'react';
