@@ -37,6 +37,8 @@ import 'react-frame-contextmenu/dist/style.scss';
 
 ### Contextmenu Example
 
+Open [https://codesandbox.io/s/react-frame-contextmenu-6ldsx1](codesandbox)
+
 ```typescript jsx
 import React from 'react';
 import {
@@ -50,15 +52,16 @@ import {
   SlackOutlined,
   TwitterOutlined,
 } from '@ant-design/icons';
+import { ContextMenu, IRFCMenu } from '../react-frame-contextmenu';
 import styled from '@emotion/styled';
-import {MenuBar, IRFCMenu} from 'react-frame-contextmenu';
 
 const ContextMenuSample: React.FC = () => {
-  const contextMenu = React.useRef<ContextMenu>(new ContextMenu({
+  const contextMenu = React.useRef<ContextMenu>(
+    new ContextMenu({
       id: 'basic',
-      style: {fontSize: '14px', minWidth: '200px'},
-    } //, MenuItem[] also you can set menu by second parameter
-  ));
+      style: { fontSize: '14px', minWidth: '200px' },
+    }), // also you can set menu by second parameter
+  );
 
   const onClickMenu: IRFCMenu.OnClickItem = React.useCallback(menuItem => {
     console.log(menuItem);
@@ -76,23 +79,23 @@ const ContextMenuSample: React.FC = () => {
     contextMenu.current.setMenu([
       {
         label: 'Back (enabled: false)',
-        icon: <ArrowLeftOutlined/>,
+        icon: <ArrowLeftOutlined />,
         click: onClickMenu,
         enabled: false,
       },
       {
         label: 'Forward',
-        icon: <ArrowRightOutlined/>,
+        icon: <ArrowRightOutlined />,
         click: onClickMenu,
         accelerator: 'Cmd+F',
       },
       {
         label: 'Reload',
-        icon: <ReloadOutlined/>,
+        icon: <ReloadOutlined />,
         click: onClickMenu,
       },
-      {type: 'separator'},
-      {label: 'Save as', click: onClickMenu, visible: false},
+      { type: 'separator' },
+      { label: 'Save as', click: onClickMenu, visible: false },
       {
         label: 'Print (enabled: false)',
         click: onClickMenu,
@@ -119,50 +122,54 @@ const ContextMenuSample: React.FC = () => {
         submenu: [
           {
             label: 'Github',
-            icon: <GithubOutlined/>,
+            icon: <GithubOutlined />,
             click: onClickMenu,
           },
           {
             label: 'Gitlab',
-            icon: <GithubOutlined/>,
+            icon: <GithubOutlined />,
             click: onClickMenu,
           },
           {
             label: 'Twitter',
-            icon: <TwitterOutlined/>,
+            icon: <TwitterOutlined />,
             click: onClickMenu,
           },
           {
             label: 'Facebook',
-            icon: <FacebookOutlined/>,
+            icon: <FacebookOutlined />,
             click: onClickMenu,
           },
           {
             label: 'Google+',
-            icon: <GooglePlusOutlined/>,
+            icon: <GooglePlusOutlined />,
             click: onClickMenu,
             visible: false,
           },
           {
             label: 'Slack (enabled: false)',
-            icon: <SlackOutlined/>,
+            icon: <SlackOutlined />,
             click: onClickMenu,
             enabled: false,
           },
           {
             label: 'Email',
-            icon: <MailOutlined/>,
+            icon: <MailOutlined />,
             click: onClickMenu,
           },
         ],
       },
-      {type: 'separator'},
-      {label: 'View Source', click: onClickMenu},
-      {label: 'Save', click: onClickMenu},
+      { type: 'separator' },
+      { label: 'View Source', click: onClickMenu },
+      { label: 'Save', click: onClickMenu },
     ]);
   }, [onClickMenu]);
 
-  return <Container onContextMenu={handleContextMenu}>Right mouse click here</Container>;
+  return (
+    <Container data-testid={'context-menu-sample-div'} onContextMenu={handleContextMenu}>
+      Right mouse click here
+    </Container>
+  );
 };
 
 const Container = styled.div`
@@ -192,7 +199,7 @@ import {
   SlackOutlined,
   TwitterOutlined,
 } from '@ant-design/icons';
-import {MenuBar, IRFCMenu} from 'react-frame-contextmenu';
+import { MenuBar, IRFCMenu } from '../react-frame-contextmenu';
 
 const MenuBarExample: React.FC = () => {
   const onClickMenu: IRFCMenu.OnClickItem = React.useCallback(menuItem => {
@@ -203,9 +210,9 @@ const MenuBarExample: React.FC = () => {
     <Container>
       <div className='menubar-container'>
         <MenuBar
-          style={{height: '25px'}}
+          style={{ height: '25px' }}
           submenu={{
-            style: {minWidth: '150px'},
+            style: { minWidth: '150px' },
             placement: 'bottom',
           }}
           items={[
@@ -214,23 +221,23 @@ const MenuBarExample: React.FC = () => {
               submenu: [
                 {
                   label: 'Back (enabled: false)',
-                  icon: <ArrowLeftOutlined/>,
+                  icon: <ArrowLeftOutlined />,
                   click: onClickMenu,
                   enabled: false,
                 },
                 {
                   label: 'Forward',
-                  icon: <ArrowRightOutlined/>,
+                  icon: <ArrowRightOutlined />,
                   click: onClickMenu,
                   accelerator: 'Cmd+F',
                 },
                 {
                   label: 'Reload',
-                  icon: <ReloadOutlined/>,
+                  icon: <ReloadOutlined />,
                   click: onClickMenu,
                 },
-                {type: 'separator'},
-                {label: 'Save as', click: onClickMenu, visible: false},
+                { type: 'separator' },
+                { label: 'Save as', click: onClickMenu, visible: false },
                 {
                   label: 'Print (enabled: false)',
                   click: onClickMenu,
@@ -257,46 +264,46 @@ const MenuBarExample: React.FC = () => {
                   submenu: [
                     {
                       label: 'Github',
-                      icon: <GithubOutlined/>,
+                      icon: <GithubOutlined />,
                       click: onClickMenu,
                     },
                     {
                       label: 'Gitlab',
-                      icon: <GithubOutlined/>,
+                      icon: <GithubOutlined />,
                       click: onClickMenu,
                     },
                     {
                       label: 'Twitter',
-                      icon: <TwitterOutlined/>,
+                      icon: <TwitterOutlined />,
                       click: onClickMenu,
                     },
                     {
                       label: 'Facebook',
-                      icon: <FacebookOutlined/>,
+                      icon: <FacebookOutlined />,
                       click: onClickMenu,
                     },
                     {
                       label: 'Google+',
-                      icon: <GooglePlusOutlined/>,
+                      icon: <GooglePlusOutlined />,
                       click: onClickMenu,
                       visible: false,
                     },
                     {
                       label: 'Slack (enabled: false)',
-                      icon: <SlackOutlined/>,
+                      icon: <SlackOutlined />,
                       click: onClickMenu,
                       enabled: false,
                     },
                     {
                       label: 'Email',
-                      icon: <MailOutlined/>,
+                      icon: <MailOutlined />,
                       click: onClickMenu,
                     },
                   ],
                 },
-                {type: 'separator'},
-                {label: 'View Source', click: onClickMenu},
-                {label: 'Save', click: onClickMenu},
+                { type: 'separator' },
+                { label: 'View Source', click: onClickMenu },
+                { label: 'Save', click: onClickMenu },
               ],
             },
             {
