@@ -10,7 +10,7 @@ import {
   SlackOutlined,
   TwitterOutlined,
 } from '@ant-design/icons';
-import { ContextMenu, IRFCMenu } from '../react-frame-contextmenu';
+import { ContextMenu, AXFCMenu } from '../react-frame-contextmenu';
 import styled from '@emotion/styled';
 
 const ContextMenuSample: React.FC = () => {
@@ -21,7 +21,7 @@ const ContextMenuSample: React.FC = () => {
     }), // also you can set menu by second parameter
   );
 
-  const onClickMenu: IRFCMenu.OnClickItem = React.useCallback(menuItem => {
+  const onClickMenu: AXFCMenu.OnClickItem = React.useCallback(menuItem => {
     console.log(menuItem);
   }, []);
 

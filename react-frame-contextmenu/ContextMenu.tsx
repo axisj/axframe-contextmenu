@@ -1,17 +1,17 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
-import { IRFCMenu } from './common/@types';
+import { AXFCMenu } from './@types';
 import { PopupMenu } from './components';
 
-class ContextMenu implements IRFCMenu.IContextMenu {
+class ContextMenu implements AXFCMenu.IContextMenu {
   container: HTMLDivElement | undefined;
-  options: IRFCMenu.IContextMenuOptions = {
+  options: AXFCMenu.IContextMenuOptions = {
     id: '',
   };
-  menuItems: IRFCMenu.IMenuItem[] = [];
+  menuItems: AXFCMenu.IMenuItem[] = [];
   _visible: boolean = false;
 
-  constructor(options: IRFCMenu.IContextMenuOptions = {}, menuItems?: IRFCMenu.IMenuItem[]) {
+  constructor(options: AXFCMenu.IContextMenuOptions = {}, menuItems?: AXFCMenu.IMenuItem[]) {
     this.options = options;
     if (menuItems) {
       this.menuItems = [...menuItems];
@@ -34,13 +34,13 @@ class ContextMenu implements IRFCMenu.IContextMenu {
     this.render();
   }
 
-  setMenu(menuItems: IRFCMenu.IMenuItem[]) {
+  setMenu(menuItems: AXFCMenu.IMenuItem[]) {
     this.menuItems = [...menuItems];
     this.render();
     return this;
   }
 
-  popup(popupOption?: IRFCMenu.IPopupOption) {
+  popup(popupOption?: AXFCMenu.IPopupOption) {
     const { x: containerLeft = 0, y: containerTop = 0 } = popupOption ?? {};
     const { id = '' } = this.options;
 
@@ -69,7 +69,7 @@ class ContextMenu implements IRFCMenu.IContextMenu {
     this.visible = false;
   }
 
-  onClickItem: IRFCMenu.OnClickItem = (menuItem, w, e) => {
+  onClickItem: AXFCMenu.OnClickItem = (menuItem, w, e) => {
     const { type = 'normal', enabled = true, visible = true } = menuItem;
 
     if (enabled) {

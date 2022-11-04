@@ -2,7 +2,7 @@ import * as React from 'react';
 import CheckboxIcon from './CheckboxIcon';
 import SubmenuIcon from './SubmenuIcon';
 import Submenu from './Submenu';
-import { IRFCMenu } from '../common/@types';
+import { AXFCMenu } from '../@types';
 
 const platform = typeof window !== 'undefined' ? window.navigator.platform : process.platform;
 const macosPlatforms = ['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K', 'darwin'];
@@ -44,10 +44,10 @@ export function KeymapDisplay(key?: string) {
     .join(' + ');
 }
 
-class MenuItem extends React.Component<IRFCMenu.IMenuItemProps> {
+class MenuItem extends React.Component<AXFCMenu.IMenuItemProps> {
   itemRef: React.RefObject<HTMLDivElement>;
 
-  constructor(props: IRFCMenu.IMenuItemProps) {
+  constructor(props: AXFCMenu.IMenuItemProps) {
     super(props);
     this.itemRef = React.createRef();
   }

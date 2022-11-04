@@ -1,12 +1,14 @@
-[![npm version](https://badge.fury.io/js/react-frame-contextmenu.svg)](https://badge.fury.io/js/react-frame-contextmenu)
-[![](https://img.shields.io/npm/dm/react-frame-contextmenu.svg)](https://www.npmjs.com/package/react-frame-contextmenu)
+# @axframe/contextmenu
 
-react-frame-menu makes menus dynamically added to the "React" project available.
+@axframe/contextmenu makes menus dynamically added to the "React" project available.
+
+[![NPM version](https://img.shields.io/npm/v/@axframe/contextmenu.svg?style=flat)](https://npmjs.org/package/@axframe/contextmenu)
+[![NPM downloads](http://img.shields.io/npm/dm/@axframe/contextmenu.svg?style=flat)](https://npmjs.org/package/@axframe/contextmenu)
 
 ## Install
 
 ```bash
-npm i react-frame-contextmenu
+npm i @axframe/contextmenu
 ```
 
 DEMO : https://react-frame-contextmenu.vercel.app/
@@ -31,7 +33,7 @@ You can also create your own files by referring to the files provided.
 import 'react-frame-contextmenu/dist/style.less';
 // or
 import 'react-frame-contextmenu/dist/style.css';
-// or 
+// or
 import 'react-frame-contextmenu/dist/style.scss';
 ```
 
@@ -52,7 +54,7 @@ import {
   SlackOutlined,
   TwitterOutlined,
 } from '@ant-design/icons';
-import { ContextMenu, IRFCMenu } from '../react-frame-contextmenu';
+import { ContextMenu, AXFCMenu } from '../react-frame-contextmenu';
 import styled from '@emotion/styled';
 
 const ContextMenuSample: React.FC = () => {
@@ -63,7 +65,7 @@ const ContextMenuSample: React.FC = () => {
     }), // also you can set menu by second parameter
   );
 
-  const onClickMenu: IRFCMenu.OnClickItem = React.useCallback(menuItem => {
+  const onClickMenu: AXFCMenu.OnClickItem = React.useCallback(menuItem => {
     console.log(menuItem);
   }, []);
 
@@ -199,10 +201,10 @@ import {
   SlackOutlined,
   TwitterOutlined,
 } from '@ant-design/icons';
-import { MenuBar, IRFCMenu } from '../react-frame-contextmenu';
+import { MenuBar, AXFCMenu } from '@axframe/contextmenu';
 
 const MenuBarExample: React.FC = () => {
-  const onClickMenu: IRFCMenu.OnClickItem = React.useCallback(menuItem => {
+  const onClickMenu: AXFCMenu.OnClickItem = React.useCallback(menuItem => {
     console.log(menuItem);
   }, []);
 
@@ -355,4 +357,3 @@ const Container = styled.div`
 
 export default MenuBarExample;
 ```
-

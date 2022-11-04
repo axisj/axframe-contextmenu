@@ -15,7 +15,7 @@ const Home: NextPage = () => {
   return (
     <PageContainer>
       <Head>
-        <title>react-frame-contextmenu</title>
+        <title>@axframe/contextmenu</title>
         <meta name='description' content='Index' />
         <link rel='icon' href='/favicon.ico' />
       </Head>

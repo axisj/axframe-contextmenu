@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IRFCMenu } from './common/@types';
+import { AXFCMenu } from './@types';
 import ContextMenu from './ContextMenu';
 
 interface IState {
@@ -7,12 +7,12 @@ interface IState {
   openedMenuIndex: number;
 }
 
-class MenuBar extends React.Component<IRFCMenu.IMenuBarProps, IState> {
-  childMenu: IRFCMenu.IContextMenu[];
+class MenuBar extends React.Component<AXFCMenu.IMenuBarProps, IState> {
+  childMenu: AXFCMenu.IContextMenu[];
   containerRef: React.RefObject<HTMLDivElement>;
   keydownInfo?: string;
 
-  constructor(props: IRFCMenu.IMenuBarProps) {
+  constructor(props: AXFCMenu.IMenuBarProps) {
     super(props);
 
     this.childMenu = [];
@@ -122,7 +122,7 @@ class MenuBar extends React.Component<IRFCMenu.IMenuBarProps, IState> {
     window.addEventListener('keyup', this.onKeyUpWindow, false);
   }
 
-  componentDidUpdate(prevProps: IRFCMenu.IMenuBarProps) {
+  componentDidUpdate(prevProps: AXFCMenu.IMenuBarProps) {
     if (prevProps.items !== this.props.items) {
       this.initSubmenu();
     }

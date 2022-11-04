@@ -1,8 +1,8 @@
 import * as React from 'react';
 import MenuItem from './MenuItem';
-import { IRFCMenu } from '../common/@types';
+import { AXFCMenu } from '../@types';
 
-class PopupMenu extends React.Component<IRFCMenu.IPopupMenuProps, IRFCMenu.IPopupMenuState> {
+class PopupMenu extends React.Component<AXFCMenu.IPopupMenuProps, AXFCMenu.IPopupMenuState> {
   state = {
     visible: true,
     positioned: false,
@@ -13,7 +13,7 @@ class PopupMenu extends React.Component<IRFCMenu.IPopupMenuProps, IRFCMenu.IPopu
 
   popupMenuRef: React.RefObject<HTMLDivElement>;
 
-  static getDerivedStateFromProps(props: IRFCMenu.IPopupMenuProps, state: IRFCMenu.IPopupMenuState) {
+  static getDerivedStateFromProps(props: AXFCMenu.IPopupMenuProps, state: AXFCMenu.IPopupMenuState) {
     let nextState = state;
     let needChange = false;
 
@@ -34,7 +34,7 @@ class PopupMenu extends React.Component<IRFCMenu.IPopupMenuProps, IRFCMenu.IPopu
     return needChange ? nextState : null;
   }
 
-  constructor(props: IRFCMenu.IPopupMenuProps) {
+  constructor(props: AXFCMenu.IPopupMenuProps) {
     super(props);
     this.popupMenuRef = React.createRef();
   }
@@ -69,7 +69,7 @@ class PopupMenu extends React.Component<IRFCMenu.IPopupMenuProps, IRFCMenu.IPopu
     }
   };
 
-  onHoverItem: IRFCMenu.OnHoverItem = (item, e, hover) => {
+  onHoverItem: AXFCMenu.OnHoverItem = (item, e, hover) => {
     this.setState(prevState => {
       prevState.menuItems.forEach(n => {
         if (n === item) {

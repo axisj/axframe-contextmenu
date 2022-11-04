@@ -1,7 +1,7 @@
-import ContextMenu from '../ContextMenu';
+import ContextMenu from './ContextMenu';
 import * as React from 'react';
 
-export namespace IRFCMenu {
+export namespace AXFCMenu {
   export type OnHoverItem<P = string> = (
     menuItem: IMenuItem<P>,
     event: React.MouseEvent<HTMLDivElement>,

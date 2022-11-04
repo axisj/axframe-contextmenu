@@ -11,10 +11,10 @@ import {
   SlackOutlined,
   TwitterOutlined,
 } from '@ant-design/icons';
-import { MenuBar, IRFCMenu } from '../react-frame-contextmenu';
+import { MenuBar, AXFCMenu } from '../react-frame-contextmenu';
 
 const MenuBarExample: React.FC = () => {
-  const onClickMenu: IRFCMenu.OnClickItem = React.useCallback(menuItem => {
+  const onClickMenu: AXFCMenu.OnClickItem = React.useCallback(menuItem => {
     console.log(menuItem);
   }, []);
 
