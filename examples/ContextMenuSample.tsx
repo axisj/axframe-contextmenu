@@ -10,7 +10,7 @@ import {
   SlackOutlined,
   TwitterOutlined,
 } from '@ant-design/icons';
-import { ContextMenu, AXFCMenu } from '../react-frame-contextmenu';
+import { ContextMenu, AXFCMenu } from '../@axframe-contextmenu';
 import styled from '@emotion/styled';
 
 const ContextMenuSample: React.FC = () => {

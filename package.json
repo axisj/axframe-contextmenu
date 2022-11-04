@@ -7,14 +7,14 @@
   "repository": "https://github.com/axisj/axframe-contextmenu",
   "scripts": {
     "dev": "next dev",
-    "next:build": "next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "build:common": "lessc react-frame-contextmenu/style.less dist/style.css && rimraf ./dist/scss && ncp react-frame-contextmenu/style.less ./dist/style.less && ncp react-frame-contextmenu/less ./dist/less  && ncp react-frame-contextmenu/style.scss ./dist/style.scss && ncp react-frame-contextmenu/scss ./dist/scss",
+    "build:common": "lessc @axframe-contextmenu/style.less dist/style.css && rimraf ./dist/scss && ncp @axframe-contextmenu/style.less ./dist/style.less && ncp @axframe-contextmenu/less ./dist/less  && ncp @axframe-contextmenu/style.scss ./dist/style.scss && ncp @axframe-contextmenu/scss ./dist/scss",
     "build:es5": "rimraf ./dist/commonjs && tsc --p tsconfigs/tsconfig.es5.json",
     "build:es6": "rimraf ./dist/es6 && tsc --p tsconfigs/tsconfig.es6.json",
-    "build": "npm run build:common && npm run build:es5 && npm run build:es6",
-    "prepublishOnly": "npm run build",
+    "build:library": "npm run build:common && npm run build:es5 && npm run build:es6",
+    "prepublishOnly": "npm run build:library",
     "test": "jest"
   },
   "lint-staged": {

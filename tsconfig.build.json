@@ -30,7 +30,7 @@
     "node_modules/@types"
   ],
   "include": [
-    "react-frame-contextmenu"
+    "@axframe-contextmenu"
   ],
   "exclude": [
     "node_modules"

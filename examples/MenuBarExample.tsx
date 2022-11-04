@@ -11,7 +11,7 @@ import {
   SlackOutlined,
   TwitterOutlined,
 } from '@ant-design/icons';
-import { MenuBar, AXFCMenu } from '../react-frame-contextmenu';
+import { MenuBar, AXFCMenu } from '../@axframe-contextmenu';
 
 const MenuBarExample: React.FC = () => {
   const onClickMenu: AXFCMenu.OnClickItem = React.useCallback(menuItem => {
