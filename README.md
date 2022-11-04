@@ -11,7 +11,7 @@
 npm i @axframe/contextmenu
 ```
 
-DEMO : https://react-frame-contextmenu.vercel.app/
+DEMO : https://axframe-contextmenu.vercel.app/
 
 ## Development
 
@@ -39,7 +39,7 @@ import '@axframe/contextmenu/dist/style.scss';
 
 ### Contextmenu Example
 
-Open [codesandbox example](https://codesandbox.io/s/react-frame-contextmenu-6ldsx1)
+Open [codesandbox example](https://codesandbox.io/s/axframe-contextmenu-6ldsx1)
 
 ```typescript jsx
 import React from 'react';
