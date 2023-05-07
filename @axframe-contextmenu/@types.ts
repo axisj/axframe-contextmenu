@@ -74,6 +74,7 @@ export namespace AXFCMenu {
     popup: (popupOption?: IPopupOption) => void;
     setMenu: (menuItems: IMenuItem[]) => ContextMenu;
     close: () => void;
+    menuItems?: IMenuItem[];
   }
 
   export interface IMenuBarSubmenu {

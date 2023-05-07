@@ -65,6 +65,7 @@ class MenuBar extends React.Component<AXFCMenu.IMenuBarProps, IState> {
     const { items = [] } = this.props;
     const item = items[menuIndex];
     const submenu = this.childMenu[menuIndex];
+
     if (!submenu || !item) {
       return;
     }
@@ -83,7 +84,10 @@ class MenuBar extends React.Component<AXFCMenu.IMenuBarProps, IState> {
       this.childMenu[openedMenuIndex] && this.childMenu[openedMenuIndex].close();
     }
     // submenu.setMenu(item.submenu || []);
-    submenu.popup({ x: left + pageXOffset, y: top + height + pageYOffset });
+
+    if ((submenu.menuItems ?? []).length > 0) {
+      submenu.popup({ x: left + pageXOffset, y: top + height + pageYOffset });
+    }
 
     this.setState({
       openedMenuIndex: menuIndex,
@@ -152,6 +156,11 @@ class MenuBar extends React.Component<AXFCMenu.IMenuBarProps, IState> {
               }}
               onClick={e => {
                 this.handleMenuClick(e, mi);
+
+                if (menu.click) {
+                  menu.click(menu, window, e);
+                  this.setState({ active: false, openedMenuIndex: -1 });
+                }
               }}
               onMouseOver={e => {
                 this.handleMenuOver(e, mi);

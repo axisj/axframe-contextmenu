@@ -29,6 +29,11 @@ const MenuBarExample: React.FC = () => {
           }}
           items={[
             {
+              label: 'Home',
+              icon: <MailOutlined />,
+              click: onClickMenu,
+            },
+            {
               label: 'File',
               submenu: [
                 {
